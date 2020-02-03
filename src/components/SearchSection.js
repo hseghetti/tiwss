@@ -1,6 +1,6 @@
-import React from "react";
 import Caller from "./Caller";
 import DataProcessor from "./DataProcessor";
+import React from "react";
 
 class SearchSection extends React.Component {
     constructor(props) {
@@ -9,10 +9,6 @@ class SearchSection extends React.Component {
             urls: []
         }
     }
-
-    handlePoplet = (w) => {
-        this.props.dispatcher(w)
-    };
 
     handleServiceCallDone = (results = {}) => {
         this.setState({
@@ -24,7 +20,7 @@ class SearchSection extends React.Component {
         return (
             <div>
                 <Caller onServiceCallDone={this.handleServiceCallDone} />
-                <DataProcessor urls={this.state.urls} dispatcher={this.handlePoplet}/>
+                <DataProcessor urls={this.state.urls} dispatcher={this.props.dispatcher}/>
             </div>
         );
     }

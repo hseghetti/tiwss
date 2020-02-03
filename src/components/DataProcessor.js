@@ -1,12 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
 import _ from "lodash";
-import { connect } from 'react-redux';
-import { addWord } from '../redux/actions';
-
+import { addWord } from '../context/actions';
+import PropTypes from "prop-types";
+import React from "react";
 // TODO: temporal import with dev settings. Replace it with environment support
 import settings from "../settings/dev";
-import {Store} from "../context/store";
 
 class DataProcessor extends React.Component {
     constructor(props) {
@@ -33,7 +30,6 @@ class DataProcessor extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (!_.isEqual(prevState.urls, this.state.urls)) {
-            debugger
             this.getSitesText(this.state.urls);
         }
     };
@@ -78,8 +74,6 @@ class DataProcessor extends React.Component {
 
     handleDataProcessCompleted  = words => {
         words.forEach(word => {
-            // TODO: Remove Redux
-            // this.props.addWord(word);
             this.props.dispatcher(addWord(word));
         });
     };
@@ -111,11 +105,5 @@ class DataProcessor extends React.Component {
 DataProcessor.propTypes = {
     urls: PropTypes.arrayOf(PropTypes.string).isRequired
 };
-
-// TODO: Remove redux
-// export default connect(
-//     null,
-//     { addWord }
-// )(DataProcessor);
 
 export default DataProcessor;

@@ -1,5 +1,5 @@
 import React from 'react'
-import {ADD_WORD} from "../redux/actionTypes";
+import {ADD_WORD} from "./actionTypes";
 import _ from "lodash";
 
 export const Store = React.createContext();
@@ -14,7 +14,6 @@ const initialState = {
 function reducer (state = initialState, action ) {
     switch (action.type) {
         case ADD_WORD: {
-            // console.log(state)
             const newState = _.clone(state);
             const { word } = action.payload;
             const wordCount = newState.wordsList[word];

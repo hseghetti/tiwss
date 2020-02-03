@@ -28,7 +28,7 @@ class Caller extends React.Component {
         //         console.log(error);
         //     });
 
-        // NOTE: This is to mock the response
+        // TODO: This is to mock the response. Replace it with mock functionality
         return this.props.onServiceCallDone(
             [
                 'https://en.wikipedia.org/wiki/Boeing_737_MAX',

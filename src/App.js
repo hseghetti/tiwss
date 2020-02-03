@@ -9,7 +9,7 @@ function App() {
 
     return (
     <div className="App">
-        <SearchSection urls={["nothing"]} dispatcher={dispatch}/>
+        <SearchSection urls={[]} dispatcher={dispatch}/>
       <div>
         <WordsList wordsList={state}/>
       </div>
