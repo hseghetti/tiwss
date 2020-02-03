@@ -24,6 +24,18 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script class="cdn" src="https://cdn.jsdelivr.net/npm/wordpos-web@1.0.2/dist/wordpos.min.js"></script>
+
+    <script class="init">
+      let wordpos = window.wordpos = new WordPOS({
+        // preload: true,
+        // dictPath: 'https://unpkg.com/browse/wordpos-web@1.0.0/dict',
+        dictPath: 'https://cdn.jsdelivr.net/npm/wordpos-web@1.0.2/dict',
+        profile: true,
+        debug: true,
+        // stopwords: false
+      });
+    </script>
     <title>React App</title>
   </head>
   <body>

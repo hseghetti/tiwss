@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import WordsList from "./components/WordsList";
+import SearchSection from "./components/SearchSection";
+import { Store } from './context/store';
 
 function App() {
-  return (
+    const { state, dispatch } = React.useContext(Store);
+
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <SearchSection urls={["nothing"]} dispatcher={dispatch}/>
+      <div>
+        <WordsList wordsList={state}/>
+      </div>
     </div>
-  );
+    );
 }
 
 export default App;
