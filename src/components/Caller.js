@@ -16,26 +16,26 @@ class Caller extends React.Component {
 
     callService = (query) => {
         console.info('Request Begin --- Search ---' + Date.now());
-        // fetch(settings.serverURL + settings.searchPath.replace('{query}', query))
-        //     .then(response => {
-        //         return response.json()
-        //     })
-        //     .then(json => {
-        //         console.info('Request Ends --- Search ---' + Date.now());
-        //         return this.props.onServiceCallDone(json.urls);
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     });
+        fetch(settings.serverURL + settings.searchPath.replace('{query}', query))
+            .then(response => {
+                return response.json()
+            })
+            .then(json => {
+                console.info('Request Ends --- Search ---' + Date.now());
+                return this.props.onServiceCallDone(json.urls);
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
         // TODO: This is to mock the response. Replace it with mock functionality
-        return this.props.onServiceCallDone(
-            [
-                'https://en.wikipedia.org/wiki/Boeing_737_MAX',
-                'https://www.boeing.com/commercial/737max/',
-                'https://www.boeing.com/737-max-updates/',
-                'https://www.cnet.com/news/boeing-737-max-8-all-about-the-aircraft-flight-ban-and-investigations/'
-            ]);
+        // return this.props.onServiceCallDone(
+        //     [
+        //         'https://en.wikipedia.org/wiki/Boeing_737_MAX',
+        //         'https://www.boeing.com/commercial/737max/',
+        //         'https://www.boeing.com/737-max-updates/',
+        //         'https://www.cnet.com/news/boeing-737-max-8-all-about-the-aircraft-flight-ban-and-investigations/'
+        //     ]);
     };
 
     render() {

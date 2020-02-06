@@ -1,4 +1,4 @@
-import { ADD_WORD, SEARCH_ACTION } from "./actionTypes";
+import { ADD_WORD, SEARCH_ACTION, ADD_WORD_LIST } from "./actionTypes";
 
 // Actions creators
 
@@ -15,5 +15,12 @@ export const searchAction = (criteria, action) => ({
     payload: {
         action: action,
         criteria: criteria
+    }
+});
+
+export const addWordList = wordList => ({
+    type: ADD_WORD_LIST,
+    payload: {
+        wordList: wordList,
     }
 });

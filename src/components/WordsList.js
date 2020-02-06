@@ -17,9 +17,15 @@ function WordsList({ wordsList}) {
 }
 
 const getWordsListFormatted = wordsList => {
-        return Object.entries(wordsList).map((word) => {
-            return {value: word[0], count: word[1]};
-        });
+    const filteredList = [];
+
+    Object.entries(wordsList).forEach((word) => {
+        if (word[1] > 1) {
+            filteredList.push({value: word[0], count: word[1]});
+        }
+    });
+
+    return filteredList;
 };
 
 export default WordsList;
