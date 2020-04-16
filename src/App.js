@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import WordsList from "./components/WordsList";
-import SearchSection from "./components/SearchSection";
+import Header from "./Header";
 import { Store } from './context/store';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
 
     return (
     <div className="App">
-        <SearchSection urls={[]} dispatcher={dispatch}/>
+        <Header urls={[]} dispatcher={dispatch}/>
       <div>
         <WordsList wordsList={state}/>
       </div>

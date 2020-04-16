@@ -83,6 +83,9 @@ class DataProcessor extends React.Component {
                 })
                 .catch(error => {
                     console.log(error);
+                })
+                .finally(() => {
+                    this.props.onProcessEnds();
                 });
         });
     };
@@ -93,6 +96,7 @@ class DataProcessor extends React.Component {
 }
 
 DataProcessor.propTypes = {
+    onProcessEnds: PropTypes.func.isRequired,
     urls: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
