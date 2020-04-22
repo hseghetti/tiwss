@@ -1,5 +1,5 @@
 {
-  "serverURL": "http://localhost:8080",
-  "searchPath": "/search?q={query}",
-  "getTextPath": "/site?q={query}"
+    "serverURL": "http://localhost:8080",
+    "searchPath": "/search?q={query}",
+    "getTextPath": "/site?q={query}"
 }

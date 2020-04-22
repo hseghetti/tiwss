@@ -1,17 +1,15 @@
 import React from 'react';
 import './App.css';
-import WordsList from './components/WordsList';
+import WordsList from './WordsList';
 import Header from './Header';
-import { Store } from './context/store';
+import './mockServer/server';
 
 function App() {
-    const { state, dispatch } = React.useContext(Store);
-
     return (
         <div className="App">
-            <Header urls={[]} dispatcher={dispatch} />
+            <Header />
             <div>
-                <WordsList wordsList={state} />
+                <WordsList />
             </div>
         </div>
     );

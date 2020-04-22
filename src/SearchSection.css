@@ -1,4 +1,8 @@
-.Caller {
+.SearchSection {
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+.SearchSection-input {
+    width: 80vmin;
 }

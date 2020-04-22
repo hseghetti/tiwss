@@ -43,6 +43,7 @@
         ]
     },
     "devDependencies": {
+        "miragejs": "^0.1.37",
         "prettier": "^2.0.4",
         "prop-types": "^15.7.2"
     },
