@@ -1,5 +1,5 @@
 import { SEARCH_ACTION, ADD_WORD_LIST } from './actionTypes';
-import settingsHelper from '../settings/settings-helper'; // Ver porque tengo dos settings aca
+import settingsHelper from '../settings/settings';
 
 const wordpos = (() => {
     return (window.wordpos = new window.WordPOS({
@@ -56,7 +56,7 @@ export const addWordList = wordList => {
 };
 
 const callSearchService = async criteria => {
-    const response = await fetch(settingsHelper.serverURL + settingsHelper.searchPath.replace('{query}', criteria));
+    const response = await fetch(settingsHelper.searchPath.replace('{query}', criteria));
     const json = await response.json();
 
     return json.urls;
@@ -64,7 +64,7 @@ const callSearchService = async criteria => {
 
 const callSiteService = async sites => {
     for (let site in sites) {
-        const url = settingsHelper.serverURL + settingsHelper.getTextPath.replace('{query}', site);
+        const url = settingsHelper.getTextPath.replace('{query}', site);
         const response = await fetch(url);
         const text = await response.text();
         processData(text);

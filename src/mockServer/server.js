@@ -1,21 +1,13 @@
 import { Server, Response } from 'miragejs';
 import searchResponse from './search-response';
-/*
-TODO: this should be dynamic with:
-- local with real services
-- local with mock
-- production
-*/
 
 new Server({
     routes() {
-        // this.namespace = 'api'; // TODO: Integrate it with the environment management
-
-        this.get('http://localhost:8080/search', () => {
+        this.get('/search', () => {
             return searchResponse;
         });
 
-        this.get('http://localhost:8080/site', () => {
+        this.get('/site', () => {
             return new Response(
                 200,
                 { 'Content-Type': 'text/plain' },

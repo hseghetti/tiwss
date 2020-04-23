@@ -2,6 +2,7 @@
     "name": "tiwss",
     "version": "0.1.0",
     "private": true,
+    "proxy": "http://localhost:8080",
     "dependencies": {
         "@material-ui/core": "^4.9.0",
         "@material-ui/icons": "^4.5.1",
@@ -28,7 +29,10 @@
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
-        "extends": "react-app"
+        "extends": "react-app",
+        "parserOptions": {
+            "ecmaVersion": 11
+        }
     },
     "browserslist": {
         "production": [

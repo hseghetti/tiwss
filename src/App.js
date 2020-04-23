@@ -2,7 +2,12 @@ import React from 'react';
 import './App.css';
 import WordsList from './WordsList';
 import Header from './Header';
-import './mockServer/server';
+
+if (process.env.NODE_ENV !== 'production') {
+    (async () => {
+        await import('./mockServer/server');
+    })();
+}
 
 function App() {
     return (
