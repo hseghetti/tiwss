@@ -2,6 +2,7 @@
     "name": "tiwss",
     "version": "0.1.0",
     "private": true,
+    "proxy": "http://localhost:8080",
     "dependencies": {
         "@material-ui/core": "^4.9.0",
         "@material-ui/icons": "^4.5.1",
@@ -23,12 +24,16 @@
     },
     "scripts": {
         "start": "react-scripts start",
+        "startMock": "REACT_APP_USE_MOCK=true react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
-        "extends": "react-app"
+        "extends": "react-app",
+        "parserOptions": {
+            "ecmaVersion": 11
+        }
     },
     "browserslist": {
         "production": [
@@ -43,6 +48,7 @@
         ]
     },
     "devDependencies": {
+        "miragejs": "^0.1.37",
         "prettier": "^2.0.4",
         "prop-types": "^15.7.2"
     },

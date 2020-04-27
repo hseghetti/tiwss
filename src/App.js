@@ -1,17 +1,20 @@
 import React from 'react';
 import './App.css';
-import WordsList from './components/WordsList';
+import WordsList from './WordsList';
 import Header from './Header';
-import { Store } from './context/store';
+
+if (process.env.NODE_ENV !== 'production' && process.env.REACT_APP_USE_MOCK) {
+    (async () => {
+        await import('./mockServer/server');
+    })();
+}
 
 function App() {
-    const { state, dispatch } = React.useContext(Store);
-
     return (
         <div className="App">
-            <Header urls={[]} dispatcher={dispatch} />
+            <Header />
             <div>
-                <WordsList wordsList={state} />
+                <WordsList />
             </div>
         </div>
     );
