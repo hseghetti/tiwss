@@ -1,28 +1,28 @@
 import React, { useContext } from 'react';
 import { Store } from './context/store';
 import { TagCloud } from 'react-tagcloud';
+import './WordsList.css';
 
 function WordsList() {
-    const context = useContext(Store);
-    const worldsList = getWordsListFormatted(context.state.wordsList);
+    const { state } = useContext(Store);
+
+    const getTags = () => {
+        if (state.tagsListFiltered.length) return state.tagsListFiltered;
+        if (state.tagsList.length) return state.tagsList;
+        return [{ value: 'She did not say anything about it yet...', count: 100 }];
+    };
 
     return (
         <div className="WordsList">
-            <TagCloud minSize={12} maxSize={100} tags={worldsList} />
+            <TagCloud
+                minSize={12}
+                maxSize={100}
+                tags={getTags()}
+                className="WordsList"
+                shuffle={!state.tagsListFiltered.length}
+            />
         </div>
     );
 }
-
-const getWordsListFormatted = wordsList => {
-    const filteredList = [];
-
-    Object.entries(wordsList).forEach(word => {
-        if (word[1] > 1) {
-            filteredList.push({ value: word[0], count: word[1] });
-        }
-    });
-
-    return filteredList;
-};
 
 export default WordsList;

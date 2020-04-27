@@ -1,5 +1,5 @@
 export default {
     serverURL: '',
-    searchPath: '/search?q={query}',
-    getTextPath: '/site?q={query}'
+    searchPath: 'search?q={query}',
+    getTextPath: 'site?q={query}'
 };

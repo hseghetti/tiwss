@@ -11,6 +11,11 @@ export default () => {
     const handleOnClick = function handleOnClick() {
         context.dispatch(searchAction(query, context.dispatch)); // TODO: Is there a way to avoid send the dispatch?
     };
+    const handleOnEnter = function handleOnEnter(e) {
+        if (e.key === 'Enter') {
+            handleOnClick();
+        }
+    };
     const buttonProps = {
         color: 'primary',
         disabled: context.state.loading,
@@ -21,7 +26,8 @@ export default () => {
         className: 'SearchSection-input',
         disabled: context.state.loading,
         label: 'Do you want to know what she said?',
-        onChange: e => setQuery(e.target.value)
+        onChange: e => setQuery(e.target.value),
+        onKeyDown: handleOnEnter
     };
 
     return (

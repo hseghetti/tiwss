@@ -21,11 +21,7 @@ const searchingCompleted = () => ({
     }
 });
 
-export const searchAction = (criteria, dispatcher) => {
-    if (!dispatch) {
-        dispatch = dispatcher;
-    }
-
+const search = criteria => {
     callSearchService(criteria)
         .then(urls => {
             return callSiteService(urls);
@@ -36,7 +32,16 @@ export const searchAction = (criteria, dispatcher) => {
         .catch(e => {
             // TODO: Implement error handling
             console.log(e);
+            dispatch(searchingCompleted());
         });
+};
+
+export const searchAction = (criteria, dispatcher) => {
+    if (!dispatch) {
+        dispatch = dispatcher;
+    }
+
+    search(criteria);
 
     return {
         type: SEARCH_ACTION,
@@ -56,18 +61,19 @@ export const addWordList = wordList => {
 };
 
 const callSearchService = async criteria => {
-    const response = await fetch(settingsHelper.searchPath.replace('{query}', criteria));
+    const url = settingsHelper.searchPath.replace('{query}', criteria);
+    const response = await fetch(url);
     const json = await response.json();
 
     return json.urls;
 };
 
 const callSiteService = async sites => {
-    for (let site in sites) {
+    for (let site of sites) {
         const url = settingsHelper.getTextPath.replace('{query}', site);
         const response = await fetch(url);
         const text = await response.text();
-        processData(text);
+        await processData(text);
     }
 };
 
